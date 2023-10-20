@@ -181,7 +181,7 @@ passport.use(new LocalStrategy({
 }))
 passport.serializeUser((user,done)=>{
   process.nextTick(()=>{
-    // done(null, 세션에 기록할 내용)
+    // done(null, 세션에 기록할 내용입니다)
     done(null, {id: user._id, userid: user.userid})
   })
 })
