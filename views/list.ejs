@@ -1,0 +1,34 @@
+<!-- list.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <%- include('nav.ejs') %>
+
+  <% for(let i = 0; i < data.length; i++){ %>
+  <ul class="flex justify-between items-center border">
+    
+    <li class="basis-2/4"><a href="/view/<%= data[i]._id %>"><%= data[i].title %></a></li>
+    <li class="basis-2/4"><%= data[i].content %> <a href="/edit/<%= data[i]._id %>">✏</a><a href="javascript:deleteFun('<%= data[i]._id %>')">삭제</a></li>
+    <!-- /delete/<%= data[i]._id %> -->
+  </ul>
+  <% } %>
+  <a href="/write">글쓰기</a>
+  
+  <script>
+    function deleteFun(data){
+      let confirmChk = confirm("정말 삭제 하시겠습니까?");
+      console.log(data)
+
+      if(confirmChk){
+        window.location.href = '/delete/'+data
+      }
+    }
+  </script>
+</body>
+</html>
